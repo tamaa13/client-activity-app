@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import Cookies from 'js-cookie'
+import Swal from "sweetalert2"
 
 const formSchema = z.object({
     namaKaryawan: z.string().min(2, {
@@ -49,8 +50,13 @@ export function FormPengaturan({ userData }: any) {
     }
 
     function onSubmit(values: z.infer<typeof formSchema>) {
-        // console.log()
         fetchEditUser(values)
+        Swal.fire({
+            title: "Berhasil",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500
+        })
     }
 
     return (
